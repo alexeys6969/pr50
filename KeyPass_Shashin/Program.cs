@@ -9,7 +9,7 @@ builder.Services.AddSwaggerGen(option =>
         Version = "v1",
         Title = "Инструментарий"
     });
-    string PathFile = Path.Combine(AppContext.BaseDirectory, "Resonate_API.xml");
+    string PathFile = Path.Combine(AppContext.BaseDirectory, "KeyPass_Shashin.xml");
     option.IncludeXmlComments(PathFile);
 });
 
