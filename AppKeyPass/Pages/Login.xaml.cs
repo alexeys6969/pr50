@@ -26,7 +26,7 @@ namespace AppKeyPass.Pages
         }
         public async Task Auth(string login, string password)
         {
-            string? Token = await UserContext.Login(login, password);
+            string? Token = await Context.UserContext.Login(login, password);
             if(Token == null)
             {
                 MessageBox.Show("Логин и пароль указаны неверно");
@@ -36,7 +36,7 @@ namespace AppKeyPass.Pages
                 MainWindow.init.frame.Navigate(new Pages.Main());
             }
         }
-        private void BthAuth(object sender, RoutedEventArgs e)
+        private async void BthAuth(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(tbLogin.Text))
             {
@@ -48,7 +48,14 @@ namespace AppKeyPass.Pages
                 MessageBox.Show("Необходимо указать пароль пользователя");
                 return;
             }
-            Auth(tbLogin.Text, tbPassword.Password);
+            try
+            {
+                await Auth(tbLogin.Text, tbPassword.Password);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
         }
     }
 }

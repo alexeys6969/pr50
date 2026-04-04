@@ -37,7 +37,7 @@ namespace AppKeyPass.Pages
 
         private void Save(object sender, RoutedEventArgs e)
         {
-            if(ChangeStorage != null)
+            if(ChangeStorage == null)
             {
                 Storage storage = new Storage()
                 {
@@ -46,14 +46,14 @@ namespace AppKeyPass.Pages
                     Login = tbLogin.Text,
                     Password = tbPassword.Text,
                 };
-                StorageContext.Add(storage);
+                Context.StorageContext.Add(storage);
             } else
             {
                 ChangeStorage.Name = tbName.Text;
                 ChangeStorage.Url = tbUrl.Text;
                 ChangeStorage.Login = tbLogin.Text;
                 ChangeStorage.Password = tbPassword.Text;
-                StorageContext.Update(ChangeStorage);
+                Context.StorageContext.Update(ChangeStorage);
             }
             MessageBox.Show("Данные сохранены");
             MainWindow.init.frame.Navigate(new Pages.Main());

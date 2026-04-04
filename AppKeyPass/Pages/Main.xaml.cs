@@ -24,13 +24,14 @@ namespace AppKeyPass.Pages
         public Main()
         {
             InitializeComponent();
+            GetStorage();
         }
         public async Task GetStorage()
         {
-            List<Storage> storages = await StorageContext.Get();
+            List<Storage> storages = await Context.StorageContext.Get();
             StorageList.Children.Clear();
             foreach (Storage storage in storages) 
-                StorageList.Children.Add(new Elements.Item(Storage, this));
+                StorageList.Children.Add(new Elements.Item(storage, this));
         }
 
         private void OpenPageAdd(object sender, RoutedEventArgs e)

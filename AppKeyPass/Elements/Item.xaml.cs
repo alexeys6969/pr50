@@ -42,7 +42,7 @@ namespace AppKeyPass.Elements
 
         private void Delete(object sender, RoutedEventArgs e)
         {
-            StorageContext.Delete(Storage.Id);
+            Context.StorageContext.Delete(Storage.Id);
             this.Main.StorageList.Children.Remove(this);
             MessageBox.Show("Данные удалены");
         }
