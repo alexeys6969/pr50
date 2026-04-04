@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Elements\" />
     <Folder Include="Context\" />
+    <Folder Include="Elements\" />
   </ItemGroup>
 
 </Project>
